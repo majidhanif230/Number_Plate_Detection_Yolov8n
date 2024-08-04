@@ -54,12 +54,12 @@ The results show the model's effectiveness in accurately identifying and extract
 
 ### Usage
 
-1. Prepare your dataset by placing images in the `data` folder.
+1. Prepare your dataset.
 
-2. Train the YOLOv8n model:
+3. Train the YOLOv8n model:
     Run the Script Number_Plate_100_epoch.ipynb
 
-3. Run detection and OCR:
+4. Run detection and OCR:
 
     Run the Script Number_Plate_Testing.ipynb
 
