@@ -1,0 +1,5 @@
+train: content/train/images
+val: content/valid/images
+
+nc: 1
+names: ['Number-Plate']
