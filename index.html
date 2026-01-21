@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlateVision AI | Number Plate Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">PlateVision AI</div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#results">Results</a>
+        <a class="button ghost" href="#contact">Contact</a>
+      </div>
+    </nav>
+    <section class="hero" id="overview">
+      <div class="hero-content">
+        <p class="eyebrow">AI Vision · YOLOv8n · PaddleOCR</p>
+        <h1>Automatic Number Plate Detection That Feels Production-Ready</h1>
+        <p class="lead">
+          Upload a vehicle image and see PlateVision AI detect the plate region, draw a highlight box,
+          and extract the license text. Designed for speed, accuracy, and real-time deployment.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#demo">Try the Live Demo</a>
+          <a class="button secondary" href="#results">View Metrics</a>
+        </div>
+        <div class="hero-highlights">
+          <div>
+            <h3>0.982</h3>
+            <p>mAP@50</p>
+          </div>
+          <div>
+            <h3>3.3ms</h3>
+            <p>Inference Speed</p>
+          </div>
+          <div>
+            <h3>6.3MB</h3>
+            <p>Final Weights</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="glass">
+          <p class="card-title">Project Snapshot</p>
+          <ul>
+            <li>Model: YOLOv8n (custom trained)</li>
+            <li>OCR: PaddleOCR</li>
+            <li>Training Images: 640</li>
+            <li>Validation Images: 180</li>
+            <li>Epochs: 100</li>
+          </ul>
+          <div class="tag">Completed by Majid Hanif</div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section demo" id="demo">
+      <div class="section-header">
+        <h2>Live AI Demo</h2>
+        <p>
+          Upload a car image and the AI interface simulates detection by highlighting the plate region
+          and returning the extracted plate text.
+        </p>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-panel">
+          <div class="demo-actions">
+            <label class="upload-button" for="uploadInput">Upload Vehicle Image</label>
+            <input id="uploadInput" type="file" accept="image/*" />
+            <button class="button secondary" id="resetBtn" type="button">Reset Demo</button>
+          </div>
+          <div class="demo-canvas-wrap">
+            <canvas id="previewCanvas" width="640" height="360"></canvas>
+            <div class="badge">Detection Overlay</div>
+          </div>
+          <p class="demo-note">
+            Note: This is a front-end simulation of the detection pipeline using your uploaded image.
+          </p>
+        </div>
+        <div class="demo-output">
+          <div class="output-card">
+            <h3>Extracted Plate Text</h3>
+            <div class="plate-text" id="plateText">Upload an image to begin</div>
+            <div class="confidence-row">
+              <span>Confidence</span>
+              <strong id="confidence">--</strong>
+            </div>
+          </div>
+          <div class="output-card">
+            <h3>Detection Summary</h3>
+            <ul>
+              <li><strong>Detected Objects:</strong> <span id="objectCount">0</span></li>
+              <li><strong>Processing Time:</strong> <span id="processTime">--</span></li>
+              <li><strong>Model:</strong> YOLOv8n + PaddleOCR</li>
+              <li><strong>Deployment:</strong> Real-time ready</li>
+            </ul>
+          </div>
+          <div class="output-card">
+            <h3>Next Steps</h3>
+            <p>
+              Integrate the trained weights into backend services, attach to CCTV streams, or deploy on
+              edge devices for fast number plate recognition.
+            </p>
+            <a class="button primary" href="README.md">Read Technical Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="section-header">
+        <h2>End-to-End Workflow</h2>
+        <p>From data ingestion to OCR output, every stage is optimized for accuracy and speed.</p>
+      </div>
+      <div class="grid three">
+        <article class="card">
+          <h3>1. Data Preparation</h3>
+          <p>Curated and labeled vehicle imagery across multiple lighting scenarios for robust detection.</p>
+        </article>
+        <article class="card">
+          <h3>2. YOLOv8n Training</h3>
+          <p>Lightweight architecture with strong recall, tuned for fast inference on edge devices.</p>
+        </article>
+        <article class="card">
+          <h3>3. OCR Extraction</h3>
+          <p>PaddleOCR reads the detected plate region with refined preprocessing and normalization.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt" id="results">
+      <div class="section-header">
+        <h2>Performance &amp; Results</h2>
+        <p>Validated on 180 images with consistent precision and recall.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric-card">
+          <span>Precision</span>
+          <strong>0.988</strong>
+        </div>
+        <div class="metric-card">
+          <span>Recall</span>
+          <strong>0.968</strong>
+        </div>
+        <div class="metric-card">
+          <span>mAP@50</span>
+          <strong>0.982</strong>
+        </div>
+        <div class="metric-card">
+          <span>mAP@50-95</span>
+          <strong>0.765</strong>
+        </div>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Operational Insights</h3>
+          <p>
+            The pipeline runs at 0.4ms preprocessing, 3.3ms inference, and 5.4ms postprocess per image,
+            making it ideal for real-time checkpoints, toll booths, and smart parking applications.
+          </p>
+        </div>
+        <div class="panel">
+          <h4>Tech Stack</h4>
+          <ul>
+            <li>Ultralytics YOLOv8n</li>
+            <li>PaddleOCR</li>
+            <li>OpenCV &amp; NumPy</li>
+            <li>Python 3.8+</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="section-header">
+        <h2>Let’s Talk</h2>
+        <p>Reach out to discuss implementation, deployment, or collaboration.</p>
+      </div>
+      <div class="contact-card">
+        <div>
+          <h3>Project Owner</h3>
+          <p>Majid Hanif</p>
+          <p>Machine Learning 1 Pvt Ltd</p>
+        </div>
+        <div>
+          <h3>Highlights</h3>
+          <ul>
+            <li>High-accuracy detection with efficient footprint</li>
+            <li>Real-time OCR extraction pipeline</li>
+            <li>Production-ready workflow documentation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2024 PlateVision AI. Built with YOLOv8n &amp; PaddleOCR.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
